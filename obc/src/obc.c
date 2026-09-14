@@ -130,14 +130,14 @@ int main(void)
         if (sunlit)
         {
             /* Solar panels charge the battery and thermal energy increases. */
-            battery += 0.5f;
-            thermal += 0.5f;
+            battery += 0.75f;
+            thermal += 0.8f;
         }
         else
         {
             /* During eclipse, the battery discharges and thermal energy falls. */
-            battery -= 1.0f;
-            thermal -= 0.5f;
+            battery -= 1.5f;
+            thermal -= 0.8f;
         }
 
         /* Keep the nominal battery value within physical limits. */
@@ -175,11 +175,35 @@ int main(void)
         }
 
         /* Generate a simple varying vibration value. */
-        float vibration = 0.5f + 0.2f * sin(simulated_minute);
+	float vibration;
 
-        /* Generate the telemetry timestamp. */
-        long long timestamp = (long long)time(NULL) * 1000;
+	if (sunlit)
+	{
+    	/* Sunlit: slow, gentle oscillation. */
+    		vibration =
+        	0.45f
+        	+ 0.08f * sin(simulated_minute * 0.12f);
+	}
+	else
+	{
+    	/* Eclipse: faster, larger oscillation. */
+    		vibration =
+        	0.50f
+        	+ 0.25f * sin(simulated_minute * 0.8f);
+	}
 
+	if (vibration < 0.1f)
+    	vibration = 0.1f;
+
+	if (vibration > 1.0f)
+    	vibration = 1.0f;
+	/* Generate the telemetry timestamp. */
+	struct timespec ts;
+	clock_gettime(CLOCK_REALTIME, &ts);
+
+	long long timestamp =
+    		(long long)ts.tv_sec * 1000 +
+    		ts.tv_nsec / 1000000;
         /* Create JSON packets for each telemetry measurement. */
         char thermal_packet[256];
         char vibration_packet[256];
@@ -261,7 +285,7 @@ int main(void)
         }
 
         /* One real second represents one simulated minute. */
-        sleep(1);
+	usleep(200000);
     }
 
     close(sock);
