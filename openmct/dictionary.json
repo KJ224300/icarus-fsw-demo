@@ -1,0 +1,84 @@
+{
+    "name": "ICARUS",
+    "key": "sc",
+    "measurements": [
+        {
+            "name": "Thermal",
+            "key": "icarus.thermal",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Temperature",
+                    "units": "°C",
+                    "format": "float",
+                    "min": -50,
+                    "max": 100,
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Vibration",
+            "key": "icarus.vibration",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Vibration",
+                    "units": "g",
+                    "format": "float",
+                    "min": 0,
+                    "max": 5,
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Battery Level",
+            "key": "icarus.battery",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Battery Level",
+                    "units": "%",
+                    "format": "float",
+                    "min": 0,
+                    "max": 100,
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        }
+    ]
+}
