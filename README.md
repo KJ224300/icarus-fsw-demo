@@ -362,21 +362,37 @@ A typical demonstration can be performed as follows:
 Start Open MCT.
 
 1.Open the ICARUS Telemetry Dashboard.
+
 2.Start the Python telemetry bridge.
+
 3.Start the C OBC simulator.
+
 4.Show live Thermal, Vibration and Battery telemetry.
+
 5.Show the spacecraft progressing through the simulated orbital cycle.
+
 6.Press t to inject a thermal anomaly.
+
 7.Show the thermal value rising to 90 °C.
+
 8.Show the Safe Mode alert triggering.
+
 9.Press r to clear the anomaly.
+
 10.Show the system returning to the current nominal state.
+
 11.Press b to inject a battery anomaly.
+
 12.Show the battery value dropping to 0%.
+
 13.Show the Safe Mode alert triggering again.
+
 14.Press r to clear the anomaly.
+
 15.Network Ports
+
 16.Connection	Protocol	Port
+	
 	C OBC → Python Bridge	UDP	5000	
 	Python Bridge → Open MCT	WebSocket	8765
 	Browser → Open MCT	HTTP	8080
