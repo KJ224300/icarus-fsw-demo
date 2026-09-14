@@ -19,8 +19,8 @@ The demo includes:
 ## System Architecture
 
 
-            
-C OBC Simulator -----UDP :5000--------> Python Telemetry Bridge
+                  UDP :5000
+C OBC Simulator ------------> Python Telemetry Bridge
                                       |
                                       | WebSocket :8765
                                       v
